@@ -66,5 +66,5 @@ def Dijkstras(fromID, toID):
     
     print(TraceDict[toID][1])
 
-
-Dijkstras(0,4)
+if __name__ == "__main__":
+    Dijkstras(0,4)
