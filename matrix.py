@@ -37,8 +37,8 @@ class Node:
     def GetChecked(self) -> bool:
         return self._CHECKED
 
-    def __repr__(self) -> str: #Calledd by print()
-        return str(self.id)
+    def __repr__(self) -> str: #Called by print()
+        return str(self.id) # Changed this to get rid of the 'Node: ' part as it messed with just getting the id - KEKEK
 
 class AdjacencyMatrix:
 
