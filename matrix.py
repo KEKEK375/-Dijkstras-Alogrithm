@@ -1,2 +1,4 @@
 print("hello world")
-## edward still pees his pants
+
+def EdwardsLife():
+    print("Agressively Shit")
