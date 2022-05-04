@@ -27,6 +27,9 @@ class Node:
     def GetCurrentNodePath(self) -> list["Node"]:
         return self._NODELISTPATH.copy()
 
+    def __repr__(self) -> str:
+        return f"Node: {self.id}"
+
 class AdjacencyMatrix:
 
     def __init__(self, nodes: list[Node]):
