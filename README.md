@@ -1,5 +1,6 @@
 # -Dijkstras-Alogrithm
-the fastest route to fun
-Oliver pees his pants on a daily basis
+The fastest route to fun!
 
-this is true btw
+I pee my pants on a daily basis.
+
+(this is true btw)
