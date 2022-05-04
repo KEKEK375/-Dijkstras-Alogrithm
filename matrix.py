@@ -5,6 +5,27 @@ class Node:
     def __init__(self):
         self.id = Node.ID
         Node.ID += 1
+        self._PATH = []
+        self._PATHLENGTH = -1
+        self._NODELISTPATH = []
+
+    def UpdatePath(self, NodeList: list[tuple["Node", int]]):
+        """Takes in a List containing a tuple in the form (NodeID, weight)"""
+        self._PATH = NodeList
+        self._NODELISTPATH = []
+        self._PATHLENGTH = 0
+        for node, weight in NodeList:
+            self._PATHLENGTH += weight
+            self._NODELISTPATH.append(node)
+    
+    def GetCurrentFastestPath(self) -> list[tuple["Node", int]]:
+        return self._PATH.copy()
+    
+    def GetCurrentPathLength(self) -> int:
+        return self._PATHLENGTH
+    
+    def GetCurrentNodePath(self) -> list["Node"]:
+        return self._NODELISTPATH.copy()
 
 class AdjacencyMatrix:
 
@@ -23,7 +44,7 @@ class AdjacencyMatrix:
                         self._AM[index][iIndex] = num
                         self._AM[iIndex][index] = num
     
-    def __repr__(self) -> str:
+    def __repr__(self) -> str: #Called by print()
         OutputStr = ""
         for row in self._AM:
             aRow = ""
@@ -35,10 +56,10 @@ class AdjacencyMatrix:
             OutputStr += aRow + "\n"
         return OutputStr
 
-    def __getitem__(self, index: int) -> list[int]:
+    def __getitem__(self, index: int) -> list[int]: #Called by AM[index]
         return self._AM[index]
     
-    def __iter__(self):
+    def __iter__(self): #Called by for i in AM:
         for i in self._AM:
             for j in i:
                 yield j
