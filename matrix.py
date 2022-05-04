@@ -10,7 +10,7 @@ class Node:
         self._NODELISTPATH = []
 
     def UpdatePath(self, NodeList: list[tuple["Node", int]]):
-        """Takes in a List containing a tuple in the form (NodeID, weight)"""
+        """Takes in a List containing a tuple in the form (Node, weight)"""
         self._PATH = NodeList
         self._NODELISTPATH = []
         self._PATHLENGTH = 0
