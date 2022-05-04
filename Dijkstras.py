@@ -1,5 +1,6 @@
 from matrix import AdjacencyMatrix as AM
 from matrix import Node as N
+from errors import *
 import random as r
 
 def Dijkstras(fromID, toID):
@@ -71,6 +72,8 @@ def Dijkstras(fromID, toID):
     while node.id != fromID:
         path.append(str(node.id))
         node = TraceDict[node.id][2]
+        if node == float("inf"):
+            raise NoConnection()
     path.append(str(node.id))
     string = " -> ".join(path[::-1])
     print(string)
