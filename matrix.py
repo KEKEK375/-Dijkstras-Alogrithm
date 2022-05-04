@@ -5,31 +5,7 @@ class Node:
     def __init__(self):
         self.id = Node.ID
         Node.ID += 1
-        self._PATH = []
-        self._PATHLENGTH = -1
-        self._NODELISTPATH = []
         self._CHECKED = False
-
-    def UpdatePath(self, NodeList: list[tuple["Node", int]]):
-        """Takes in a List containing a tuple in the form (Node, weight)"""
-        self._PATH = NodeList
-        self._NODELISTPATH = []
-        self._PATHLENGTH = 0
-        for node, weight in NodeList:
-            self._PATHLENGTH += weight
-            self._NODELISTPATH.append(node)
-    
-    def GetCurrentFastestPath(self) -> list[tuple["Node", int]]:
-        "Return a list containing the path in the form [(Node, Weight), ..., ...]"
-        return self._PATH.copy()
-    
-    def GetCurrentPathLength(self) -> int:
-        "Return the total path length"
-        return self._PATHLENGTH
-    
-    def GetCurrentNodePath(self) -> list["Node"]:
-        "Return the nodes (in order) of the path"
-        return self._NODELISTPATH.copy()
 
     def SetChecked(self, checked: bool):
         self._CHECKED = checked
