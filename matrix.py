@@ -52,8 +52,8 @@ class AdjacencyMatrix:
                 if index == iIndex:
                     self._AM[index][iIndex] = 0
                 else:
-                    if item == -1 and r.random() > 0.5:    
-                        num = r.randint(1, 20)
+                    if item == -1 and r.random() < 5 / self.size:    
+                        num = r.randint(1, 99)
                         self._AM[index][iIndex] = num
                         self._AM[iIndex][index] = num
     
@@ -81,7 +81,7 @@ class AdjacencyMatrix:
 
 if __name__ == "__main__":
     nodes = []
-    for i in range(6):
+    for i in range(600):
         nodes.append(Node())
     AM = AdjacencyMatrix(nodes)
     print(AM)
