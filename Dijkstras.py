@@ -10,7 +10,7 @@ def Dijkstras(fromID, toID):
     ## creates new adjacency matrix object
     AdMat = AM(nodes)
 
-    print(AdMat)
+    #print(AdMat)
 
     ## list that traces best path for each node
     TraceDict = {} #type: dict[list[N, int, N]]
