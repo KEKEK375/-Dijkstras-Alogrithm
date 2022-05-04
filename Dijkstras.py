@@ -69,10 +69,10 @@ def Dijkstras(fromID, toID):
     path = []
     node = TraceDict[toID][0]
     while node.id != fromID:
-        path.append(node.id)
-        node = TraceDict[node.id][0]
-    path.append(node.id)
-    string = "->".join(path[::-1])
+        path.append(str(node.id))
+        node = TraceDict[node.id][2]
+    path.append(str(node.id))
+    string = " -> ".join(path[::-1])
     print(string)
 
 if __name__ == "__main__":
