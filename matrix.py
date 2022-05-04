@@ -8,6 +8,7 @@ class Node:
         self._PATH = []
         self._PATHLENGTH = -1
         self._NODELISTPATH = []
+        self._CHECKED = False
 
     def UpdatePath(self, NodeList: list[tuple["Node", int]]):
         """Takes in a List containing a tuple in the form (Node, weight)"""
@@ -29,6 +30,12 @@ class Node:
     def GetCurrentNodePath(self) -> list["Node"]:
         "Return the nodes (in order) of the path"
         return self._NODELISTPATH.copy()
+
+    def SetChecked(self, checked: bool):
+        self._CHECKED = checked
+    
+    def GetChecked(self) -> bool:
+        return self._CHECKED
 
     def __repr__(self) -> str: #Calledd by print()
         return f"Node: {self.id}"
