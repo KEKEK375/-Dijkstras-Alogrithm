@@ -23,7 +23,7 @@ def Dijkstras(fromID, toID):
             TraceDict[i].append(None)
         node.SetChecked(False)
 
-    print(TraceDict)
+    #print(TraceDict)
 
     while not TraceDict[toID][0].GetChecked():
         ## finds the unchecked node with the shortest current path
@@ -34,7 +34,7 @@ def Dijkstras(fromID, toID):
                     if TraceDict[i][1] < shortestPath[0]:
                         shortestPath[0],shortestPath[1] = TraceDict[i][1],TraceDict[i][0]
         currentNode = shortestPath
-        print(currentNode)
+        #print(currentNode)
 
         ''' Pseudocode for the trace table type thing:
             for differentNode in nodes
@@ -67,19 +67,18 @@ def Dijkstras(fromID, toID):
         #I've now also changed this
 
         # Slightly altered and I think it works - KEKEK
-        '''
+#        '''
         for i in TraceDict:
             if not TraceDict[i][0].GetChecked():
                 if AdMat[TraceDict[i][0].id][currentNode[1].id] >= 0:
                     if TraceDict[i][1] > currentNode[0] + AdMat[TraceDict[i][0].id][currentNode[1].id]:
                         TraceDict[i][1] = currentNode[0] + AdMat[TraceDict[i][0].id][currentNode[1].id]
-                        print(TraceDict[i][1])
                         TraceDict[i][2] = currentNode[1]
         
         currentNode[1].SetChecked(True)
     
     print(TraceDict[toID][1])
-    '''
+#    '''
 
 
 
