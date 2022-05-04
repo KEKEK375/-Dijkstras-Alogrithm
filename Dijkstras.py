@@ -8,9 +8,8 @@ def Dijkstras(fromID, toID):
     ## creates new adjacency matrix object
     AdMat = AM(nodes)
 
-    ## Layout: TraceList = [[CurrentNode, CurrentBestPathLength, NodeFrom], [...], [...] ... ]
-
-    TraceList = []
+    ## list that traces best path for each node
+    TraceList = [] #type:list[]
     for i,node in enumerate(nodes):
         TraceList.append([])
         TraceList[i].append(node)
