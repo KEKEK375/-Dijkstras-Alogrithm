@@ -67,7 +67,7 @@ def Dijkstras(fromID, toID):
         #I've now also changed this
 
         # Slightly altered and I think it works - KEKEK
-#        '''
+        '''
         for i in TraceDict:
             if not TraceDict[i][0].GetChecked():
                 if AdMat[TraceDict[i][0].id][currentNode[1].id] >= 0:
@@ -78,7 +78,7 @@ def Dijkstras(fromID, toID):
         currentNode[1].SetChecked(True)
     
     print(TraceDict[toID][1])
-#    '''
+    '''
 
 
 
