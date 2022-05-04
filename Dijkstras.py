@@ -45,19 +45,6 @@ def Dijkstras(fromID, toID):
         #Problem case when the fromNode has no arcs to other nodes, or there is no way of getting from A to B. In this case it should output -1? -J
 
         #This is my attempt at the algorithm, it does not work :( but I think its close -J
-        """
-        for i in TraceDict:
-            if not TraceDict[i][0].GetChecked():
-                if AdMat[TraceDict[i][0].id][currentNode[0].id] >= 0:
-                    if TraceDict[i][1] > currentNode[1] + AdMat[TraceDict[i][0].id][currentNode[0].id]:
-                        TraceDict[i][1] = currentNode[1] + AdMat[TraceDict[i][0].id][currentNode[0].id]
-                        TraceDict[i][2] = currentNode[0]
-        
-        currentNode[0].SetChecked(True)
-        
-        #This line should output the trace in realtime, it will spam your console if it doesnt work...
-        print(currentNode[0].id,TraceDict)
-        """
 
         #I think it doesn't work because i messed up the currentNode bit, but i think I've fixed it now so it might work - KEKEK
 
@@ -67,7 +54,7 @@ def Dijkstras(fromID, toID):
         #I've now also changed this
 
         # Slightly altered and I think it works - KEKEK
-        '''
+        
         for i in TraceDict:
             if not TraceDict[i][0].GetChecked():
                 if AdMat[TraceDict[i][0].id][currentNode[1].id] >= 0:
@@ -78,9 +65,6 @@ def Dijkstras(fromID, toID):
         currentNode[1].SetChecked(True)
     
     print(TraceDict[toID][1])
-    '''
-
-
 
 
 Dijkstras(0,4)
