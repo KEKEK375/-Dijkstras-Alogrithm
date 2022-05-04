@@ -70,7 +70,7 @@ def Dijkstras(fromID, toID):
     node = TraceDict[toID][0]
     while node.id != fromID:
         path.append(node.id)
-        node = TraceDict[toID][0]
+        node = TraceDict[node.id][0]
     path.append(node.id)
     string = "->".join(path[::-1])
     print(string)
