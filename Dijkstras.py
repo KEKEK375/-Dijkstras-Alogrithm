@@ -1,9 +1,10 @@
 from matrix import AdjacencyMatrix as AM
 from matrix import Node as N
+import random as r
 
 def Dijkstras(fromID, toID):
     nodes = [] #type: list[N]
-    for i in range(6):
+    for i in range(60):
         nodes.append(N())
     ## creates new adjacency matrix object
     AdMat = AM(nodes)
@@ -65,6 +66,14 @@ def Dijkstras(fromID, toID):
         currentNode[1].SetChecked(True)
     
     print(TraceDict[toID][1])
+    path = []
+    node = TraceDict[toID][0]
+    while node.id != fromID:
+        path.append(node.id)
+        node = TraceDict[toID][0]
+    path.append(node.id)
+    string = "->".join(path[::-1])
+    print(string)
 
 if __name__ == "__main__":
-    Dijkstras(0,4)
+    Dijkstras(0, r.randint(1, 59))
