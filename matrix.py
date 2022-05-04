@@ -58,9 +58,14 @@ class AdjacencyMatrix:
                         self._AM[iIndex][index] = num
     
     def __repr__(self) -> str: #Called by print()
-        OutputStr = ""
+        OutputStr = " " * (len(str(self.size)) + 1)
+        for i in range(0,self.size):
+            OutputStr += " " * (len(str(self.size)) - len(str(i)) + 1) + str(i)
+        OutputStr += "\n\n"
+        tempI = 0
         for row in self._AM:
-            aRow = ""
+            aRow = str(tempI) + " " * (len(str(self.size)) - len(str(tempI)) + 1)
+            tempI += 1
             for item in row:
                 item = str(item)
                 if len(item) == 1:
