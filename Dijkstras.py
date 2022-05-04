@@ -1,6 +1,5 @@
 from matrix import AdjacencyMatrix as AM
 from matrix import Node as N
-from time import sleep
 
 def Dijkstras(fromID, toID):
     nodes = [] #type: list[N]
@@ -41,7 +40,10 @@ def Dijkstras(fromID, toID):
                     if differentNode[bestPath] > currentNode[bestPath] + pathBetweenNodes
                         differentNode[bestPath] = currentNode[bestPath] + pathBetweenNodes'''
 
-        """             
+        #Problem case when the fromNode has no arcs to other nodes, or there is no way of getting from A to B. In this case it should output -1? -J
+
+        #This is my attempt at the algorythm, it does not work :( but I think its close -J
+        """
         for i in TraceDict:
             if not TraceDict[i][0].GetChecked():
                 if AdMat[TraceDict[i][0].id][currentNode[0].id] >= 0:
@@ -51,10 +53,8 @@ def Dijkstras(fromID, toID):
         
         currentNode[0].SetChecked(True)
         
+        #This line should output the trace in realtime, it will spam your console if it doesnt work...
         print(currentNode[0].id,TraceDict)
         """
-
-        ##Remove this sleep, its just for testing purposes
-        sleep(1)
 
 Dijkstras(0,4)
