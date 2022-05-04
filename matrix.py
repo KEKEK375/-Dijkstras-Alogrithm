@@ -19,15 +19,18 @@ class Node:
             self._NODELISTPATH.append(node)
     
     def GetCurrentFastestPath(self) -> list[tuple["Node", int]]:
+        "Return a list containing the path in the form [(Node, Weight), ..., ...]"
         return self._PATH.copy()
     
     def GetCurrentPathLength(self) -> int:
+        "Return the total path length"
         return self._PATHLENGTH
     
     def GetCurrentNodePath(self) -> list["Node"]:
+        "Return the nodes (in order) of the path"
         return self._NODELISTPATH.copy()
 
-    def __repr__(self) -> str:
+    def __repr__(self) -> str: #Calledd by print()
         return f"Node: {self.id}"
 
 class AdjacencyMatrix:
