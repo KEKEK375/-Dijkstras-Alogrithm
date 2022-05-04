@@ -8,8 +8,7 @@ def Dijkstras():
     ## creates new adjacency matrix object
     AdMat = AM(nodes)
 
-    
-
+    ## Layout: TraceList = [[SelfPointer, CurrentBestPathLength, LastNode], [...], [...] ... ]
 
 
 
