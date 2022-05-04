@@ -1,5 +1,6 @@
 from matrix import AdjacencyMatrix as AM
 from matrix import Node as N
+from time import sleep
 
 def Dijkstras(fromID, toID):
     nodes = [] #type: list[N]
@@ -16,23 +17,23 @@ def Dijkstras(fromID, toID):
         if fromID == node.id:
             TraceDict[i].append(0)
             TraceDict[i].append(node)
-            node.SetChecked(True)
         else:
             TraceDict[i].append(-1)
             TraceDict[i].append(None)
-            node.SetChecked(False)
+        node.SetChecked(False)
 
     #print(TraceDict)
 
     while not TraceDict[toID][0].GetChecked():
         ## finds the unchecked node with the shortest current path
         shortestPath = [float("inf"), float("inf")]
-        for i in range(len(TraceDict)):
+        for i in(TraceDict):
             if TraceDict[i][1] >= 0:
                 if not TraceDict[i][0].GetChecked():
                     if TraceDict[i][1] < shortestPath[0]:
-                        shortestPath = [TraceDict[i][1], i]
-        currentNode = TraceDict[i]
+                        shortestPath = TraceDict[i]
+        currentNode = shortestPath
+        print(currentNode)
 
         ''' Pseudocode for the trace table type thing:
             for differentNode in nodes
@@ -40,7 +41,20 @@ def Dijkstras(fromID, toID):
                     if differentNode[bestPath] > currentNode[bestPath] + pathBetweenNodes
                         differentNode[bestPath] = currentNode[bestPath] + pathBetweenNodes'''
 
-        ## Happy Dijkstra-ing while I munch
+        """             
+        for i in TraceDict:
+            if not TraceDict[i][0].GetChecked():
+                if AdMat[TraceDict[i][0].id][currentNode[0].id] >= 0:
+                    if TraceDict[i][1] > currentNode[1] + AdMat[TraceDict[i][0].id][currentNode[0].id]:
+                        TraceDict[i][1] = currentNode[1] + AdMat[TraceDict[i][0].id][currentNode[0].id]
+                        TraceDict[i][2] = currentNode[0]
+        
+        currentNode[0].SetChecked(True)
+        
+        print(currentNode[0].id,TraceDict)
+        """
 
+        ##Remove this sleep, its just for testing purposes
+        sleep(1)
 
 Dijkstras(0,4)
