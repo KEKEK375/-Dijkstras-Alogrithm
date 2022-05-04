@@ -1,7 +1,7 @@
 from matrix import AdjacencyMatrix as AM
 from matrix import Node as N
 
-def Dijkstras():
+def Dijkstras(fromID, toID):
     nodes = []
     for i in range(6):
         nodes.append(N())
@@ -10,13 +10,20 @@ def Dijkstras():
 
     ## Layout: TraceList = [[CurrentNode, CurrentBestPathLength, NodeFrom], [...], [...] ... ]
 
-    TraceList = [[]]*len(nodes)
+    TraceList = []
     for i,node in enumerate(nodes):
+        TraceList.append([])
         TraceList[i].append(node)
-        TraceList[i].append(-1)
+        if fromID == node.id:
+            TraceList[i].append(0)
+        else:
+            TraceList[i].append(-1)
         TraceList[i].append(None)
 
+    #print(TraceList)
 
 
 
-Dijkstras()
+
+
+Dijkstras(0,4)
