@@ -9,7 +9,7 @@ def Dijkstras(fromID, toID):
     AdMat = AM(nodes)
 
     ## list that traces best path for each node
-    TraceList = [] #type:list[]
+    TraceList = [] #type: list[tuple[N, int, N]]
     for i,node in enumerate(nodes):
         TraceList.append([])
         TraceList[i].append(node)
