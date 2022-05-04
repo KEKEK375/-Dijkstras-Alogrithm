@@ -81,7 +81,7 @@ class AdjacencyMatrix:
 
 if __name__ == "__main__":
     nodes = []
-    for i in range(600):
+    for i in range(60):
         nodes.append(Node())
     AM = AdjacencyMatrix(nodes)
     print(AM)
