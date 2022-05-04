@@ -8,9 +8,13 @@ def Dijkstras():
     ## creates new adjacency matrix object
     AdMat = AM(nodes)
 
-    ## Layout: TraceList = [[SelfPointer, CurrentBestPathLength, LastNode], [...], [...] ... ]
+    ## Layout: TraceList = [[CurrentNode, CurrentBestPathLength, NodeFrom], [...], [...] ... ]
 
-
+    TraceList = [[]]*len(nodes)
+    for i,node in enumerate(nodes):
+        TraceList[i].append(node)
+        TraceList[i].append(-1)
+        TraceList[i].append(None)
 
 
 
