@@ -38,7 +38,7 @@ class Node:
         return self._CHECKED
 
     def __repr__(self) -> str: #Calledd by print()
-        return self.id
+        return str(self.id)
 
 class AdjacencyMatrix:
 
