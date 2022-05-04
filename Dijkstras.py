@@ -5,6 +5,16 @@ def Dijkstras():
     nodes = []
     for i in range(6):
         nodes.append(N())
+    ## creates new adjacency matrix object
     AdMat = AM(nodes)
     print(AdMat)
     print(AdMat[1][2])
+
+
+
+
+
+
+
+
+Dijkstras()
