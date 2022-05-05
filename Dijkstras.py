@@ -10,10 +10,10 @@ def Dijkstras(size):
     print(AdMat)
     print()
     fromID = int(input("Enter fromID: "))
-    if fromID >= size:
+    if fromID >= size or fromID < 0:
         raise NodeDoesNotExist(fromID)
     toID = int(input("Enter toID: "))
-    if toID >= size:
+    if toID >= size or toID < 0:
         raise NodeDoesNotExist(toID)
     print()
     print(f"Attempting to route from {fromID} to {toID}")
@@ -69,7 +69,7 @@ def Dijkstras(size):
             if not TraceDict[i][0].GetChecked():
                 if currentNode[1] == float("inf"):
                     print("Path not found")
-                    break
+                    return
                 if TraceDict[i][0].id > currentNode[1].id: #Gets the greatest node so checks in the right place in AM
                     greatestNode = TraceDict[i][0]
                     leastNode = currentNode[1]
