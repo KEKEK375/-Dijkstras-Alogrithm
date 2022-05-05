@@ -9,10 +9,22 @@ def Dijkstras(size):
 
     print(AdMat)
     print()
-    fromID = int(input("Enter fromID: "))
+    fromID = input("Enter fromID: ")
+    try:
+        fromID = int(fromID)
+    except:
+        error = True
+    if error:
+        raise NodeDoesNotExist(fromID)
     if fromID >= size or fromID < 0:
         raise NodeDoesNotExist(fromID)
-    toID = int(input("Enter toID: "))
+    toID = input("Enter toID: ")
+    try:
+        toID = int(toID)
+    except:
+        error = True
+    if error:
+        raise NodeDoesNotExist(fromID)
     if toID >= size or toID < 0:
         raise NodeDoesNotExist(toID)
     print()
