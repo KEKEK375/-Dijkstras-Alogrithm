@@ -68,8 +68,7 @@ def Dijkstras(size):
         for i in TraceDict:
             if not TraceDict[i][0].GetChecked():
                 if currentNode[1] == float("inf"):
-                    print("Path not found")
-                    return
+                    raise NoConnection()
                 if TraceDict[i][0].id > currentNode[1].id: #Gets the greatest node so checks in the right place in AM
                     greatestNode = TraceDict[i][0]
                     leastNode = currentNode[1]
