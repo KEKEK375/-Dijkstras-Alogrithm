@@ -3,16 +3,20 @@ from matrix import Node as N
 from errors import *
 import random as r
 
-def Dijkstras(fromID, toID):
-    nodes = [] #type: list[N]
-    for i in range(60):
-        nodes.append(N())
+def Dijkstras(size):
     ## creates new adjacency matrix object
-    AdMat = AM(nodes)
+    AdMat = AM(size)
 
-    #print(AdMat)
+    print(AdMat)
+    print()
+    fromID = int(input("Enter fromID: "))
+    toID = int(input("Enter toID: "))
+    print()
+    print(f"Attempting to route from {fromID} to {toID}")
+    print()
 
     ## list that traces best path for each node
+    nodes = AdMat.GetNodes()
     TraceDict = {} #type: dict[list[N, int, N]]
     for i,node in enumerate(nodes):
         TraceDict[i] = []
@@ -59,14 +63,24 @@ def Dijkstras(fromID, toID):
         
         for i in TraceDict:
             if not TraceDict[i][0].GetChecked():
-                if AdMat[TraceDict[i][0].id][currentNode[1].id] >= 0:
-                    if TraceDict[i][1] > currentNode[0] + AdMat[TraceDict[i][0].id][currentNode[1].id]:
-                        TraceDict[i][1] = currentNode[0] + AdMat[TraceDict[i][0].id][currentNode[1].id]
+                if currentNode[1] == float("inf"):
+                    print("Path not found")
+                    break
+                if TraceDict[i][0].id > currentNode[1].id: #Gets the greatest node so checks in the right place in AM
+                    greatestNode = TraceDict[i][0]
+                    leastNode = currentNode[1]
+                else:
+                    leastNode = TraceDict[i][0]
+                    greatestNode = currentNode[1]
+                if AdMat[greatestNode.id][leastNode.id] >= 0:
+                    if TraceDict[i][1] > currentNode[0] + AdMat[greatestNode.id][leastNode.id]:
+                        TraceDict[i][1] = currentNode[0] + AdMat[greatestNode.id][leastNode.id]
                         TraceDict[i][2] = currentNode[1]
         
         currentNode[1].SetChecked(True)
     
-    print(TraceDict[toID][1])
+    print(f"Path Length: {TraceDict[toID][1]}")
+    print()
     path = []
     node = TraceDict[toID][0]
     while node.id != fromID:
@@ -76,7 +90,8 @@ def Dijkstras(fromID, toID):
             raise NoConnection()
     path.append(str(node.id))
     string = " -> ".join(path[::-1])
-    print(string)
+    print("Path: " + string)
+    print()
 
 if __name__ == "__main__":
-    Dijkstras(0, r.randint(1, 59))
+    Dijkstras(60)

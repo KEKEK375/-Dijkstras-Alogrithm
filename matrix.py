@@ -18,11 +18,14 @@ class Node:
 
 class AdjacencyMatrix:
 
-    def __init__(self, nodes: list[Node]):
-        self.size = len(nodes)
+    def __init__(self, size: int):
+        self.size = size
+        self._NODES = []
+        for i in range(size):
+            self._NODES.append(Node())
         self._AM = []
-        for i in range(self.size):
-            self._AM.append([-1]*self.size)
+        for i in range(1, self.size+1):
+            self._AM.append([-1]*i)
         for index, tempList in enumerate(self._AM):
             for iIndex, item in enumerate(tempList):
                 if index == iIndex:
@@ -30,17 +33,20 @@ class AdjacencyMatrix:
                 else:
                     if item == -1 and r.random() < 5 / self.size:    
                         num = r.randint(1, 99)
-                        self._AM[index][iIndex] = num
-                        self._AM[iIndex][index] = num
+                        try:
+                            self._AM[index][iIndex] = num #If that index doesnt exist, just flips the indexes
+                        except:
+                            self._AM[iIndex][index] = num
+    
+    def GetNodes(self) -> list[Node]:
+        return self._NODES.copy()
     
     def __repr__(self) -> str: #Called by print()
-        OutputStr = " " * (len(str(self.size)) + 1)
-        for i in range(0,self.size):
-            OutputStr += " " * (len(str(self.size)) - len(str(i)) + 1) + str(i)
-        OutputStr += "\n\n"
+        digits = len(str(self.size))
+        OutputStr = ""
         tempI = 0
         for row in self._AM:
-            aRow = str(tempI) + " " * (len(str(self.size)) - len(str(tempI)) + 1)
+            aRow = str(tempI) + " " * (digits - len(str(tempI)) + 1)
             tempI += 1
             for item in row:
                 item = str(item)
@@ -48,6 +54,10 @@ class AdjacencyMatrix:
                     aRow += " "
                 aRow += " " + item
             OutputStr += aRow + "\n"
+        OutputStr += "\n"
+        OutputStr += " " * (digits+1)
+        for i in range(self.size):
+            OutputStr += " " * (digits - len(str(i)) + 1) + str(i)
         return OutputStr
 
     def __getitem__(self, index: int) -> list[int]: #Called by AM[index]
@@ -61,8 +71,5 @@ class AdjacencyMatrix:
 
 
 if __name__ == "__main__":
-    nodes = []
-    for i in range(60):
-        nodes.append(Node())
-    AM = AdjacencyMatrix(nodes)
+    AM = AdjacencyMatrix(60)
     print(AM)
