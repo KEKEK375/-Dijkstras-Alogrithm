@@ -10,7 +10,11 @@ def Dijkstras(size):
     print(AdMat)
     print()
     fromID = int(input("Enter fromID: "))
+    if fromID >= size:
+        raise NodeDoesNotExist(fromID)
     toID = int(input("Enter toID: "))
+    if toID >= size:
+        raise NodeDoesNotExist(toID)
     print()
     print(f"Attempting to route from {fromID} to {toID}")
     print()
